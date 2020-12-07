@@ -10,16 +10,17 @@ public class DeveloperService {
 
     DeveloperRepository developerRepository = new DeveloperRepository();
 
-    public void developerSave(Developer developer) {
-        developerRepository.save(developer);
+    public Developer developerSave(Developer developer) {
+        return developerRepository.save(developer);
     }
 
-    public void developerDelete(Developer developer) {
+    public Developer developerDelete(Developer developer) {
         developerRepository.delete(developer);
+        return null;
     }
 
-    public void developerUpdate(Developer developer, List<Skill> list) {
-        developerRepository.update(developer, list);
+    public Developer developerUpdate(Developer developer, List<Skill> list) {
+        return developerRepository.update(developer, list);
     }
 
     public Developer developerGet(Developer developer) {

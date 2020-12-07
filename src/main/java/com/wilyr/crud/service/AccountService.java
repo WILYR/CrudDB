@@ -7,16 +7,17 @@ public class AccountService {
 
     AccountRepository accountRepository = new AccountRepository();
 
-    public void accountSave(Account account) {
-        accountRepository.save(account);
+    public Account accountSave(Account account) {
+        return accountRepository.save(account);
     }
 
-    public void accountDelete(Account account) {
+    public Account accountDelete(Account account) {
         accountRepository.delete(account);
+        return null;
     }
 
-    public void accountUpdate(Account account) {
-        accountRepository.update(account);
+    public Account accountUpdate(Account account) {
+        return accountRepository.update(account);
     }
 
     public Account accountGet(Account account) {

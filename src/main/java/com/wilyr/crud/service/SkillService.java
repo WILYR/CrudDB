@@ -6,16 +6,17 @@ import com.wilyr.crud.repository.mySqlRepository.SkillRepository;
 public class SkillService {
     SkillRepository skillRepository = new SkillRepository();
 
-    public void skillSave(Skill skill) {
-        skillRepository.save(skill);
+    public Skill skillSave(Skill skill) {
+        return skillRepository.save(skill);
     }
 
-    public void skillDelete(Skill skill) {
+    public Skill skillDelete(Skill skill) {
         skillRepository.delete(skill);
+        return null;
     }
 
-    public void skillUpdate(Skill skill) {
-        skillRepository.update(skill);
+    public Skill skillUpdate(Skill skill) {
+        return skillRepository.update(skill);
     }
 
     public Skill skillGet(Skill skill) {
