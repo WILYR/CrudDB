@@ -9,7 +9,7 @@ public abstract class AbstractRepository {
 
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/crud?serverTimezone=Europe/Moscow";
     static final String USER = "root";
-    static final String PASSWORD = "ybrbnf22";
+    static final String PASSWORD = "******";
 
     Connection connection = setConnection();
     Statement statement = null;
