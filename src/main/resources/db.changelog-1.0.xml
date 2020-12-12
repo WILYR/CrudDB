@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="Никита (generated)" id="1607795963749-1">
+        <createTable catalogName="crud" tableName="accounts">
+            <column autoIncrement="true" name="id" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountstatus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-2">
+        <createTable catalogName="crud" tableName="skills">
+            <column autoIncrement="true" name="id" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-3">
+        <createTable catalogName="crud" tableName="accountstatus">
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-4">
+        <createTable catalogName="crud" tableName="developers">
+            <column name="accountid" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="skillid" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-5">
+        <addPrimaryKey catalogName="crud" columnNames="status" constraintName="PRIMARY" tableName="accountstatus"/>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-6">
+        <addForeignKeyConstraint baseColumnNames="skillid" baseTableCatalogName="crud" baseTableName="developers" constraintName="developers_fk1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableCatalogName="crud" referencedTableName="skills"/>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-7">
+        <addForeignKeyConstraint baseColumnNames="accountid" baseTableCatalogName="crud" baseTableName="developers" constraintName="developers_fk0" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableCatalogName="crud" referencedTableName="accounts"/>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-8">
+        <addForeignKeyConstraint baseColumnNames="accountstatus" baseTableCatalogName="crud" baseTableName="accounts" constraintName="Accounts_fk0" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="status" referencedTableCatalogName="crud" referencedTableName="accountstatus"/>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-9">
+        <createIndex catalogName="crud" indexName="accountid" tableName="developers" unique="true">
+            <column name="accountid"/>
+            <column name="skillid"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-10">
+        <createIndex catalogName="crud" indexName="login" tableName="accounts" unique="true">
+            <column name="login"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Никита (generated)" id="1607795963749-11">
+        <createIndex catalogName="crud" indexName="name" tableName="skills" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
