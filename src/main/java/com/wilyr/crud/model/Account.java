@@ -1,11 +1,27 @@
 package com.wilyr.crud.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "accountstatus")
     private AccountStatus accountStatus;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+
+    @OneToOne(mappedBy = "account")
+    private Developer developer;
+
 
     public Account(String login, String password, AccountStatus accountStatus, long id) {
         this.login = login;
@@ -20,6 +36,14 @@ public class Account {
     }
 
     public Account() {
+    }
+
+    public Developer getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(Developer developer) {
+        this.developer = developer;
     }
 
     public String getLogin() {
