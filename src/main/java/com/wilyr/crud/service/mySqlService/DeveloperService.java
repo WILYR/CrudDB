@@ -1,4 +1,4 @@
-package com.wilyr.crud.service;
+package com.wilyr.crud.service.mySqlService;
 
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;

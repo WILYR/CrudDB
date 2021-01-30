@@ -3,7 +3,7 @@ package com.wilyr.crud.controller.mysql;
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.DeveloperService;
+import com.wilyr.crud.service.mySqlService.DeveloperService;
 
 import java.util.ArrayList;
 import java.util.List;

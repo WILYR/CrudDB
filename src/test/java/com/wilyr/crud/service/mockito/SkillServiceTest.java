@@ -1,13 +1,12 @@
 package com.wilyr.crud.service.mockito;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.SkillService;
+import com.wilyr.crud.service.mySqlService.SkillService;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 
 public class SkillServiceTest {
 

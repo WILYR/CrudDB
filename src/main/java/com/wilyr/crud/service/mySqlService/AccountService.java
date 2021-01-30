@@ -1,4 +1,4 @@
-package com.wilyr.crud.service;
+package com.wilyr.crud.service.mySqlService;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.repository.mySqlRepository.AccountRepository;

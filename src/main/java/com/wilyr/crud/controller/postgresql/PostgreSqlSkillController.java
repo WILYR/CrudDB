@@ -1,25 +1,25 @@
 package com.wilyr.crud.controller.postgresql;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.SkillService;
+import com.wilyr.crud.service.postgreSqlService.PostgreSqlSkillService;
 
 public class PostgreSqlSkillController {
-    SkillService skillService = new SkillService();
+    PostgreSqlSkillService postgreSqlSkillService = new PostgreSqlSkillService();
 
     public void save(Skill skill) {
-        skillService.skillSave(skill);
+        postgreSqlSkillService.save(skill);
     }
 
     public void delete(Skill skill) {
-        skillService.skillDelete(skill);
+        postgreSqlSkillService.delete(skill);
     }
 
     public void update(Long id, String str) {
-        skillService.skillUpdate(new Skill(id, str));
+        postgreSqlSkillService.update(new Skill(id, str));
     }
 
-    public Skill get(String name) {
-        Skill skill = skillService.skillGet(new Skill(name));
+    public Skill get(Long id) {
+        Skill skill = postgreSqlSkillService.get(new Skill(id, ""));
         if (skill != null) {
             return skill;
         } else {

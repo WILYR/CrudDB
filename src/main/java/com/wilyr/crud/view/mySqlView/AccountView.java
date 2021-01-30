@@ -1,4 +1,4 @@
-package com.wilyr.crud.view;
+package com.wilyr.crud.view.mySqlView;
 
 import com.wilyr.crud.controller.mysql.MySqlAccountController;
 import com.wilyr.crud.model.Account;

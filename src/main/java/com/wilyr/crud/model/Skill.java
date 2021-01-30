@@ -29,6 +29,13 @@ public class Skill {
 
     }
 
+    public List<Developer> getDeveloperList() {
+        return developerList;
+    }
+
+    public void setDeveloperList(List<Developer> developerList) {
+        this.developerList = developerList;
+    }
 
     public void setId(Long id) {
         this.id = id;

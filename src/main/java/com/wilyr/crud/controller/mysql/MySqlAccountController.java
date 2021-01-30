@@ -2,7 +2,7 @@ package com.wilyr.crud.controller.mysql;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.AccountService;
+import com.wilyr.crud.service.mySqlService.AccountService;
 
 public class MySqlAccountController {
 

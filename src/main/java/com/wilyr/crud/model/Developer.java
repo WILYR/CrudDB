@@ -1,9 +1,6 @@
 package com.wilyr.crud.model;
 
-import liquibase.pro.packaged.I;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,16 +9,17 @@ public class Developer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long developerId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "accountid")
     private Account account;
 
-    @ManyToMany
-    @JoinTable(name="developers",
-            joinColumns=@JoinColumn(name="accountid"),
-            inverseJoinColumns=@JoinColumn(name="skillid"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="developer_skills",
+            joinColumns=@JoinColumn(name="developer_id",referencedColumnName = "id"),
+            inverseJoinColumns=@JoinColumn(name="skill_id"))
     private List<Skill> skills;
 
     public Developer(List<Skill> skills, Account account) {

@@ -15,13 +15,8 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
     public Skill save(Skill skill) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Skill returningSkill = session.get(Skill.class, skill.getId());
-            if (returningSkill != null) {
-                System.out.println("Skill with that id is already exist in base");
-            } else {
-                session.save(skill);
-                transaction.commit();
-            }
+            session.save(skill);
+            transaction.commit();
             return skill;
         } catch (HibernateException e) {
             System.out.println("Error in session connection........");
@@ -51,7 +46,7 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
 
     @Override
     public void delete(Skill skill) {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Skill.class, skill.getId()));
             transaction.commit();
@@ -62,7 +57,7 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
 
     @Override
     public Skill get(Skill skill) {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             Skill returningSkill = session.get(Skill.class, skill.getId());
             return returningSkill;

@@ -19,7 +19,7 @@ public class Account {
     @Column(name = "id")
     private long id;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(mappedBy = "account",cascade = CascadeType.REMOVE)
     private Developer developer;
 
 

@@ -2,7 +2,7 @@ package com.wilyr.crud.service.mockito;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.AccountService;
+import com.wilyr.crud.service.mySqlService.AccountService;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;

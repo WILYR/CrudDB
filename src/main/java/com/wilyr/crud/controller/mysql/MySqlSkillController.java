@@ -1,7 +1,7 @@
 package com.wilyr.crud.controller.mysql;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.SkillService;
+import com.wilyr.crud.service.mySqlService.SkillService;
 
 public class MySqlSkillController {
 
