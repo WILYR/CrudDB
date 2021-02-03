@@ -1,7 +1,7 @@
-package com.wilyr.crud.service.postgreSqlService;
+package com.wilyr.crud.service.hibernate;
 
 import com.wilyr.crud.model.Account;
-import com.wilyr.crud.repository.postgreSqlRepository.PostgreSqlAccountRepository;
+import com.wilyr.crud.repository.hibernateRepository.PostgreSqlAccountRepository;
 
 public class PostgreSqlAccountService {
     PostgreSqlAccountRepository postgreSqlAccountRepository = new PostgreSqlAccountRepository();

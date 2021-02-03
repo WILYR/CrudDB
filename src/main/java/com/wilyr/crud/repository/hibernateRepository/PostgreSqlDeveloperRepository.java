@@ -1,11 +1,8 @@
-package com.wilyr.crud.repository.postgreSqlRepository;
+package com.wilyr.crud.repository.hibernateRepository;
 
-import com.wilyr.crud.model.Account;
-import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 import com.wilyr.crud.repository.IDeveloperRepository;
-import liquibase.pro.packaged.A;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,10 +42,7 @@ public class PostgreSqlDeveloperRepository implements IDeveloperRepository {
     @Override
     public Developer get(Developer developer) {
         try(Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-            Developer returningDeveloper = session.get(Developer.class, developer.getDeveloperId());
-            transaction.commit();
-            return returningDeveloper;
+            return session.get(Developer.class, developer.getDeveloperId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection......");
             e.printStackTrace();

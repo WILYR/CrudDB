@@ -1,8 +1,8 @@
-package com.wilyr.crud.controller.postgresql;
+package com.wilyr.crud.controller.hibernate;
 
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlDeveloperService;
+import com.wilyr.crud.service.hibernate.PostgreSqlDeveloperService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,8 @@
-package com.wilyr.crud.repository.postgreSqlRepository;
+package com.wilyr.crud.repository.hibernateRepository;
 
 import com.wilyr.crud.model.Account;
-import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import liquibase.pro.packaged.C;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

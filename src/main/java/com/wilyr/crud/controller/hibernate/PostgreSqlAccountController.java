@@ -1,9 +1,8 @@
-package com.wilyr.crud.controller.postgresql;
+package com.wilyr.crud.controller.hibernate;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlAccountService;
-import liquibase.pro.packaged.A;
+import com.wilyr.crud.service.hibernate.PostgreSqlAccountService;
 
 public class PostgreSqlAccountController {
     PostgreSqlAccountService postgreSqlAccountService = new PostgreSqlAccountService();

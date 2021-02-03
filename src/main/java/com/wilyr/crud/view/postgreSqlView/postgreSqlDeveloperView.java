@@ -1,7 +1,6 @@
 package com.wilyr.crud.view.postgreSqlView;
 
-import com.wilyr.crud.controller.mysql.MySqlDeveloperController;
-import com.wilyr.crud.controller.postgresql.PostgreSqlDeveloperController;
+import com.wilyr.crud.controller.hibernate.PostgreSqlDeveloperController;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 
@@ -34,7 +33,7 @@ public class postgreSqlDeveloperView {
                         System.out.print("Set developer id for delete: ");
                         Long idForDelete = in.nextLong();
                         developerController.delete(idForDelete);
-                    }catch (InputMismatchException e) {
+                    } catch (InputMismatchException e) {
                         e.getMessage();
                     }
                     break;

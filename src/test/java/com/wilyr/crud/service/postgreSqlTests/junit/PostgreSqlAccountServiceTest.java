@@ -2,11 +2,9 @@ package com.wilyr.crud.service.postgreSqlTests.junit;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlAccountService;
-import liquibase.pro.packaged.A;
+import com.wilyr.crud.service.hibernate.PostgreSqlAccountService;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class PostgreSqlAccountServiceTest {
     PostgreSqlAccountService postgreSqlAccountService = new PostgreSqlAccountService();

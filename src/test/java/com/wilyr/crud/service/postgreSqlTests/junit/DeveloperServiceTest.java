@@ -4,14 +4,10 @@ import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlAccountService;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlDeveloperService;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlSkillService;
-import liquibase.pro.packaged.A;
-import liquibase.pro.packaged.D;
-import liquibase.pro.packaged.S;
+import com.wilyr.crud.service.hibernate.PostgreSqlAccountService;
+import com.wilyr.crud.service.hibernate.PostgreSqlDeveloperService;
+import com.wilyr.crud.service.hibernate.PostgreSqlSkillService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;

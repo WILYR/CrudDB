@@ -1,4 +1,4 @@
-package com.wilyr.crud.repository.postgreSqlRepository;
+package com.wilyr.crud.repository.hibernateRepository;
 
 import com.wilyr.crud.model.Skill;
 import com.wilyr.crud.repository.ISkillsRepository;
@@ -58,9 +58,7 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
     @Override
     public Skill get(Skill skill) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-            Skill returningSkill = session.get(Skill.class, skill.getId());
-            return returningSkill;
+            return session.get(Skill.class, skill.getId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection........");
             return null;

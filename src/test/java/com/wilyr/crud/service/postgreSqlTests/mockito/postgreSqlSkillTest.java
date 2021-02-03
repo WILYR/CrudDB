@@ -1,8 +1,7 @@
 package com.wilyr.crud.service.postgreSqlTests.mockito;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.mySqlService.SkillService;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlSkillService;
+import com.wilyr.crud.service.hibernate.PostgreSqlSkillService;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;

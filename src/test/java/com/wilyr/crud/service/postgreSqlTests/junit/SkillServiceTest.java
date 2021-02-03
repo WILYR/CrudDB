@@ -1,8 +1,7 @@
 package com.wilyr.crud.service.postgreSqlTests.junit;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlSkillService;
-import liquibase.pro.packaged.S;
+import com.wilyr.crud.service.hibernate.PostgreSqlSkillService;
 import org.junit.Assert;
 import org.junit.Test;
 

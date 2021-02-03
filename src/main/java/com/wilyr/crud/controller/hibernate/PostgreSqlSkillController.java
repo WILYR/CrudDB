@@ -1,7 +1,7 @@
-package com.wilyr.crud.controller.postgresql;
+package com.wilyr.crud.controller.hibernate;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlSkillService;
+import com.wilyr.crud.service.hibernate.PostgreSqlSkillService;
 
 public class PostgreSqlSkillController {
     PostgreSqlSkillService postgreSqlSkillService = new PostgreSqlSkillService();

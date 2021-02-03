@@ -1,7 +1,6 @@
 package com.wilyr.crud.view.postgreSqlView;
 
-import com.wilyr.crud.controller.mysql.MySqlAccountController;
-import com.wilyr.crud.controller.postgresql.PostgreSqlAccountController;
+import com.wilyr.crud.controller.hibernate.PostgreSqlAccountController;
 import com.wilyr.crud.model.Account;
 
 import java.util.Scanner;

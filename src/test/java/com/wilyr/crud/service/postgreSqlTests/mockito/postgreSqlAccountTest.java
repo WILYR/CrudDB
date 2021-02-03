@@ -2,8 +2,7 @@ package com.wilyr.crud.service.postgreSqlTests.mockito;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.mySqlService.AccountService;
-import com.wilyr.crud.service.postgreSqlService.PostgreSqlAccountService;
+import com.wilyr.crud.service.hibernate.PostgreSqlAccountService;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;

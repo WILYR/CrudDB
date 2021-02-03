@@ -1,4 +1,4 @@
-package com.wilyr.crud.repository.postgreSqlRepository;
+package com.wilyr.crud.repository.hibernateRepository;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.repository.IAccountRepository;
@@ -43,11 +43,7 @@ public class PostgreSqlAccountRepository implements IAccountRepository {
     @Override
     public Account get(Account account) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = null;
-            transaction = session.beginTransaction();
-            Account returningAccount = session.get(Account.class, account.getId());
-            transaction.commit();
-            return returningAccount;
+            return session.get(Account.class, account.getId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection......");
             return null;

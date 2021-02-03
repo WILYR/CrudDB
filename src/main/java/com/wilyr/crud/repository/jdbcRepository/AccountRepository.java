@@ -1,4 +1,4 @@
-package com.wilyr.crud.repository.mySqlRepository;
+package com.wilyr.crud.repository.jdbcRepository;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
@@ -8,10 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AccountRepository extends AbstractRepository implements IAccountRepository {
+public class AccountRepository implements IAccountRepository,AbstractRepository {
+
+
+
 
     public Account save(Account account) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "INSERT into accounts values(id, '" + account.getLogin() + "', " +
                     "'" + account.getPassword() + "', '" + account.getAccountStatus() + "');";
             statement.execute(sqlQuery);
@@ -23,7 +26,7 @@ public class AccountRepository extends AbstractRepository implements IAccountRep
     }
 
     public void delete(Account account) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "DELETE FROM accounts WHERE login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
         } catch (SQLException e) {
@@ -32,7 +35,7 @@ public class AccountRepository extends AbstractRepository implements IAccountRep
     }
 
     public Account get(Account account) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "SELECT id, login, password, accountstatus from accounts where login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();
@@ -47,7 +50,7 @@ public class AccountRepository extends AbstractRepository implements IAccountRep
     }
 
     public Account update(Account account) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "UPDATE accounts set password = '" + account.getPassword() + "'" +
                     ", accountstatus = '" + account.getAccountStatus() + "'";
             statement.execute(sqlQuery);

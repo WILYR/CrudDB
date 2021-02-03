@@ -1,9 +1,5 @@
 package com.wilyr.crud.view.postgreSqlView;
 
-import com.wilyr.crud.view.mySqlView.AccountView;
-import com.wilyr.crud.view.mySqlView.DeveloperView;
-import com.wilyr.crud.view.mySqlView.SkillView;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

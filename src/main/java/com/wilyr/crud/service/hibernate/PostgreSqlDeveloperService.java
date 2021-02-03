@@ -1,8 +1,8 @@
-package com.wilyr.crud.service.postgreSqlService;
+package com.wilyr.crud.service.hibernate;
 
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.repository.postgreSqlRepository.PostgreSqlDeveloperRepository;
+import com.wilyr.crud.repository.hibernateRepository.PostgreSqlDeveloperRepository;
 
 import java.util.List;
 

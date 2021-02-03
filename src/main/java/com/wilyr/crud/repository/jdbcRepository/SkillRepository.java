@@ -1,4 +1,4 @@
-package com.wilyr.crud.repository.mySqlRepository;
+package com.wilyr.crud.repository.jdbcRepository;
 
 import com.wilyr.crud.model.Skill;
 import com.wilyr.crud.repository.ISkillsRepository;
@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SkillRepository extends AbstractRepository implements ISkillsRepository {
+public class SkillRepository  implements ISkillsRepository,AbstractRepository {
 
 
     public Skill save(Skill skill) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "INSERT INTO skills VALUES (id,'" + skill.getName() + "');";
             statement.execute(sqlQuery);
             return skill;
@@ -22,7 +22,7 @@ public class SkillRepository extends AbstractRepository implements ISkillsReposi
     }
 
     public void delete(Skill skill) {
-        try(Statement statement = connection.createStatement()) {
+        try(Statement statement = setConnection().createStatement()) {
             String sqlQuery = null;
             if (skill.getName() == null) {
                 sqlQuery = "DELETE FROM skills WHERE id = '" + skill.getId() + "';";
@@ -37,7 +37,7 @@ public class SkillRepository extends AbstractRepository implements ISkillsReposi
 
 
     public Skill update(Skill skill) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "UPDATE skills\n" +
                     "set name = '" + skill.getName() + "'\n" +
                     "where id = '" + skill.getId() + "';";
@@ -50,7 +50,7 @@ public class SkillRepository extends AbstractRepository implements ISkillsReposi
     }
 
     public Skill get(Skill skill) {
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "select id, name from skills where name = '" + skill.getName() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();

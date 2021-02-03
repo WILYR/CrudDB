@@ -1,7 +1,6 @@
 package com.wilyr.crud.view.postgreSqlView;
 
-import com.wilyr.crud.controller.mysql.MySqlSkillController;
-import com.wilyr.crud.controller.postgresql.PostgreSqlSkillController;
+import com.wilyr.crud.controller.hibernate.PostgreSqlSkillController;
 import com.wilyr.crud.model.Skill;
 
 import java.util.InputMismatchException;

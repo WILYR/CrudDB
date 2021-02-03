@@ -1,8 +1,7 @@
-package com.wilyr.crud.service.postgreSqlService;
+package com.wilyr.crud.service.hibernate;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.repository.postgreSqlRepository.PostgreSqlSkillRepository;
-import liquibase.pro.packaged.S;
+import com.wilyr.crud.repository.hibernateRepository.PostgreSqlSkillRepository;
 
 public class PostgreSqlSkillService {
     PostgreSqlSkillRepository postgreSqlSkillRepository = new PostgreSqlSkillRepository();
