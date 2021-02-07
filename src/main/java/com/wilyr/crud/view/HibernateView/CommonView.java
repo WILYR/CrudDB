@@ -1,12 +1,12 @@
-package com.wilyr.crud.view.postgreSqlView;
+package com.wilyr.crud.view.HibernateView;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class postgreSqlCommonView {
-    postgreSqlDeveloperView developerView = new postgreSqlDeveloperView();
-    postgreSqlSkillView skillView = new postgreSqlSkillView();
-    postgreSqlAccountView accountView = new postgreSqlAccountView();
+public class CommonView {
+    DeveloperView developerView = new DeveloperView();
+    SkillView skillView = new SkillView();
+    AccountView accountView = new AccountView();
 
     public void showMainMenu() {
         Scanner in = new Scanner(System.in);

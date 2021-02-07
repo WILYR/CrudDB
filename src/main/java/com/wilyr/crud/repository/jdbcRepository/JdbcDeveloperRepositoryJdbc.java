@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeveloperRepository  implements IDeveloperRepository,AbstractRepository {
+public class JdbcDeveloperRepositoryJdbc implements IDeveloperRepository, JdbcAbstractRepository {
 
     public Developer save(Developer developer) {
         try (Statement statement = setConnection().createStatement()){
@@ -28,8 +28,10 @@ public class DeveloperRepository  implements IDeveloperRepository,AbstractReposi
         }
     }
 
-    public void delete(Developer developer) {
+    public void delete(Long id) {
         try (Statement statement = setConnection().createStatement()){
+            Developer developer = new Developer();
+            developer.setDeveloperId(id);
             String sqlQuery = "DELETE from developers where accountid = '" + developer.getAccount().getId() + "';";
             statement.execute(sqlQuery);
         } catch (SQLException e) {
@@ -37,8 +39,10 @@ public class DeveloperRepository  implements IDeveloperRepository,AbstractReposi
         }
     }
 
-    public Developer get(Developer developer) {
+    public Developer get(Long id) {
         try (Statement statement = setConnection().createStatement()){
+            Developer developer = new Developer();
+            developer.setDeveloperId(id);
             String sqlQuery = "SELECT accountid, skillid from developers where accountid = '" + developer.getAccount().getId() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();
@@ -62,9 +66,9 @@ public class DeveloperRepository  implements IDeveloperRepository,AbstractReposi
         try (Statement statement = setConnection().createStatement()){
             String sqlQuery = "DELETE FROM developers where accountid = '" + developer.getAccount().getId() + "';";
             statement.execute(sqlQuery);
-            SkillRepository skillRepository = new SkillRepository();
+            JdbcSkillRepositoryJdbc skillRepository = new JdbcSkillRepositoryJdbc();
             for (Skill skill : newSkills) {
-                skill = skillRepository.get(skill);
+                skill = skillRepository.get(skill.getId());
             }
             developer.setSkills(newSkills);
             save(developer);

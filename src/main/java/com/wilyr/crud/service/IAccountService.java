@@ -1,8 +1,8 @@
-package com.wilyr.crud.repository;
+package com.wilyr.crud.service;
 
 import com.wilyr.crud.model.Account;
 
-public interface IAccountRepository extends GenericRepository {
+public interface IAccountService {
     Account save(Account account);
 
     void delete(Long id);

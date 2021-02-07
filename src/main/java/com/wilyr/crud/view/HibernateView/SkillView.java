@@ -1,14 +1,14 @@
-package com.wilyr.crud.view.postgreSqlView;
+package com.wilyr.crud.view.HibernateView;
 
-import com.wilyr.crud.controller.hibernate.PostgreSqlSkillController;
+import com.wilyr.crud.controller.hibernate.SkillController;
 import com.wilyr.crud.model.Skill;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class postgreSqlSkillView {
+public class SkillView {
     public void skillMenu() {
-        PostgreSqlSkillController skillController = new PostgreSqlSkillController();
+        SkillController skillController = new SkillController();
         Scanner in = new Scanner(System.in);
         int skillMenuNumber;
         do {
@@ -26,7 +26,7 @@ public class postgreSqlSkillView {
                     break;
                 case 2:
                     System.out.print("Delete skill(BY ID): ");
-                    skillController.delete(new Skill(in.nextLong(), ""));
+                    skillController.delete(in.nextLong());
                     break;
                 case 3:
                     System.out.print("Update skill(BY ID): ");

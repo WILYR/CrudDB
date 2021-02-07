@@ -1,9 +1,9 @@
-package com.wilyr.crud.service.postgreSqlTests.mockito;
+package com.wilyr.crud.service.hibernateTests.mockito;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.PostgreSqlDeveloperService;
+import com.wilyr.crud.service.hibernate.DeveloperServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -14,7 +14,7 @@ import static org.mockito.BDDMockito.given;
 
 public class postgreSqlDeveloperTest {
     @Mock
-    PostgreSqlDeveloperService developerService =  org.mockito.Mockito.mock(PostgreSqlDeveloperService.class, Mockito.RETURNS_DEEP_STUBS);
+    DeveloperServiceImpl developerService =  org.mockito.Mockito.mock(DeveloperServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Skill[] arr= new Skill[]{new Skill("Name"), new Skill("Name2")};
     Developer developer = new Developer(Arrays.asList(arr), new Account("developer", "passdeveloper"));
 
@@ -25,13 +25,13 @@ public class postgreSqlDeveloperTest {
 
     @Test
     public void developerGet() {
-        given(developerService.get(developer)).willReturn(developer);
+        given(developerService.get(developer.getDeveloperId())).willReturn(developer);
     }
 
     @Test
     public void developerDelete() {
-        developerService.delete(developer);
-        given(developerService.get(developer)).willThrow(NullPointerException.class);
+        developerService.delete(developer.getDeveloperId());
+        given(developerService.get(developer.getDeveloperId())).willThrow(NullPointerException.class);
     }
 
     @Test

@@ -7,13 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class PostgreSqlAccountRepository implements IAccountRepository {
-
-    SessionFactory sessionFactory = SingletonHibernateRepository.getInstance().sessionFactory;
+public class HibernateAccountRepository implements IAccountRepository {
 
     @Override
     public Account save(Account account) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
             Transaction transaction = null;
             transaction = session.beginTransaction();
             Account returningAccount = session.get(Account.class, account.getId());
@@ -30,8 +28,9 @@ public class PostgreSqlAccountRepository implements IAccountRepository {
     }
 
     @Override
-    public void delete(Account account) {
-        try (Session session = sessionFactory.openSession()) {
+    public void delete(Long id) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
+            Account account = new Account("","", null, id);
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Account.class, account.getId()));
             transaction.commit();
@@ -41,8 +40,9 @@ public class PostgreSqlAccountRepository implements IAccountRepository {
     }
 
     @Override
-    public Account get(Account account) {
-        try (Session session = sessionFactory.openSession()) {
+    public Account get(Long id) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
+            Account account = new Account("","", null, id);
             return session.get(Account.class, account.getId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection......");
@@ -52,7 +52,7 @@ public class PostgreSqlAccountRepository implements IAccountRepository {
 
     @Override
     public Account update(Account account) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
             Transaction transaction = null;
             transaction = session.beginTransaction();
             Account returningAccount = session.get(Account.class, account.getId());

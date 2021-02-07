@@ -1,12 +1,11 @@
-package com.wilyr.crud.repository;
+package com.wilyr.crud.service;
 
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 
 import java.util.List;
 
-public interface IDeveloperRepository extends GenericRepository {
-
+public interface IDeveloperService {
     Developer save(Developer developer);
 
     void delete(Long id);
@@ -14,5 +13,4 @@ public interface IDeveloperRepository extends GenericRepository {
     Developer get(Long id);
 
     Developer update(Developer developer, List<Skill> newSkills);
-
 }

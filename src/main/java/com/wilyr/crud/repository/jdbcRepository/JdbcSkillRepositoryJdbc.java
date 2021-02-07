@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SkillRepository  implements ISkillsRepository,AbstractRepository {
+public class JdbcSkillRepositoryJdbc implements ISkillsRepository, JdbcAbstractRepository {
 
 
     public Skill save(Skill skill) {
@@ -21,8 +21,9 @@ public class SkillRepository  implements ISkillsRepository,AbstractRepository {
         }
     }
 
-    public void delete(Skill skill) {
+    public void delete(Long id) {
         try(Statement statement = setConnection().createStatement()) {
+            Skill skill = new Skill(id,"");
             String sqlQuery = null;
             if (skill.getName() == null) {
                 sqlQuery = "DELETE FROM skills WHERE id = '" + skill.getId() + "';";
@@ -49,8 +50,9 @@ public class SkillRepository  implements ISkillsRepository,AbstractRepository {
         }
     }
 
-    public Skill get(Skill skill) {
+    public Skill get(Long id) {
         try (Statement statement = setConnection().createStatement()){
+            Skill skill = new Skill(id,"");
             String sqlQuery = "select id, name from skills where name = '" + skill.getName() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();

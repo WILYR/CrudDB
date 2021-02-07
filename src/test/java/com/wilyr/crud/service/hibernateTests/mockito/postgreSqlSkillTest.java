@@ -1,7 +1,7 @@
-package com.wilyr.crud.service.postgreSqlTests.mockito;
+package com.wilyr.crud.service.hibernateTests.mockito;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.PostgreSqlSkillService;
+import com.wilyr.crud.service.hibernate.SkillServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -10,7 +10,7 @@ import static org.mockito.BDDMockito.given;
 
 public class postgreSqlSkillTest {
     @Mock
-    PostgreSqlSkillService skillService = org.mockito.Mockito.mock(PostgreSqlSkillService.class, Mockito.RETURNS_DEEP_STUBS);
+    SkillServiceImpl skillService = org.mockito.Mockito.mock(SkillServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Skill skill = new Skill("Name");
 
     @Test
@@ -20,13 +20,13 @@ public class postgreSqlSkillTest {
 
     @Test
     public void skillGet() {
-        given(skillService.get(skill)).willReturn(skill);
+        given(skillService.get(skill.getId())).willReturn(skill);
     }
 
     @Test
     public void skillDelete() {
-        skillService.delete(skill);
-        given(skillService.get(skill)).willThrow(NullPointerException.class);
+        skillService.delete(skill.getId());
+        given(skillService.get(skill.getId())).willThrow(NullPointerException.class);
     }
 
     @Test

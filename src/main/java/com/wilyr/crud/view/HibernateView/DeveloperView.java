@@ -1,15 +1,15 @@
-package com.wilyr.crud.view.postgreSqlView;
+package com.wilyr.crud.view.HibernateView;
 
-import com.wilyr.crud.controller.hibernate.PostgreSqlDeveloperController;
+import com.wilyr.crud.controller.hibernate.DeveloperController;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class postgreSqlDeveloperView {
+public class DeveloperView {
     public void developerMenu() {
-        PostgreSqlDeveloperController developerController = new PostgreSqlDeveloperController();
+        DeveloperController developerController = new DeveloperController();
         Scanner in = new Scanner(System.in);
         int developerMenuNumber;
         do {

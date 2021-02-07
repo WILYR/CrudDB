@@ -1,8 +1,8 @@
-package com.wilyr.crud.repository;
+package com.wilyr.crud.service;
 
 import com.wilyr.crud.model.Skill;
 
-public interface ISkillsRepository extends GenericRepository {
+public interface ISkillService {
     Skill save(Skill skill);
 
     Skill update(Skill skill);

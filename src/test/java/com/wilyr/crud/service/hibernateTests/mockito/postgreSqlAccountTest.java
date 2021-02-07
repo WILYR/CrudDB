@@ -1,8 +1,8 @@
-package com.wilyr.crud.service.postgreSqlTests.mockito;
+package com.wilyr.crud.service.hibernateTests.mockito;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.hibernate.PostgreSqlAccountService;
+import com.wilyr.crud.service.hibernate.AccountServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 public class postgreSqlAccountTest {
     @Mock
-    PostgreSqlAccountService accountService = org.mockito.Mockito.mock(PostgreSqlAccountService.class, Mockito.RETURNS_DEEP_STUBS);
+    AccountServiceImpl accountService = org.mockito.Mockito.mock(AccountServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Account account = new Account("G", "Pass", AccountStatus.BANNED, 0);
 
     @Test
@@ -24,13 +24,13 @@ public class postgreSqlAccountTest {
 
     @Test
     public void accountGet() {
-        given(accountService.get(account)).willReturn(account);
+        given(accountService.get(account.getId())).willReturn(account);
     }
 
     @Test
     public void accountDelete() {
-       accountService.delete(account);
-        given(accountService.get(account)).willThrow(NullPointerException.class);
+       accountService.delete(account.getId());
+        given(accountService.get(account.getId())).willThrow(NullPointerException.class);
     }
 
     @Test

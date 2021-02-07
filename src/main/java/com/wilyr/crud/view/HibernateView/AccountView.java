@@ -1,13 +1,13 @@
-package com.wilyr.crud.view.postgreSqlView;
+package com.wilyr.crud.view.HibernateView;
 
-import com.wilyr.crud.controller.hibernate.PostgreSqlAccountController;
+import com.wilyr.crud.controller.hibernate.AccountController;
 import com.wilyr.crud.model.Account;
 
 import java.util.Scanner;
 
-public class postgreSqlAccountView {
+public class AccountView {
     public void accountMenu() {
-        PostgreSqlAccountController accountController = new PostgreSqlAccountController();
+        AccountController accountController = new AccountController();
         Scanner in = new Scanner(System.in);
         int accountMenuNumber;
         do {

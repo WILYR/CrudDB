@@ -7,13 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class PostgreSqlSkillRepository implements ISkillsRepository {
+public class HibernateSkillRepository implements ISkillsRepository {
 
-    SessionFactory sessionFactory = SingletonHibernateRepository.getInstance().sessionFactory;
 
     @Override
     public Skill save(Skill skill) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
             Transaction transaction = session.beginTransaction();
             session.save(skill);
             transaction.commit();
@@ -26,7 +25,7 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
 
     @Override
     public Skill update(Skill skill) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
             Transaction transaction = session.beginTransaction();
             Skill returningSkill = session.get(Skill.class, skill.getId());
             if (returningSkill == null) {
@@ -45,8 +44,9 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
     }
 
     @Override
-    public void delete(Skill skill) {
-        try (Session session = sessionFactory.openSession()) {
+    public void delete(Long id) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
+            Skill skill = new Skill(id, "");
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Skill.class, skill.getId()));
             transaction.commit();
@@ -56,8 +56,9 @@ public class PostgreSqlSkillRepository implements ISkillsRepository {
     }
 
     @Override
-    public Skill get(Skill skill) {
-        try (Session session = sessionFactory.openSession()) {
+    public Skill get(Long id) {
+        try (Session session = SingletonHibernateRepository.getInstance().session) {
+            Skill skill = new Skill(id, "");
             return session.get(Skill.class, skill.getId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection........");

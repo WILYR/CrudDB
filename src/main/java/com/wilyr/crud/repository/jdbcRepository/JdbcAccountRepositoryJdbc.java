@@ -1,5 +1,6 @@
 package com.wilyr.crud.repository.jdbcRepository;
 
+import com.wilyr.crud.controller.hibernate.AccountController;
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.repository.IAccountRepository;
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AccountRepository implements IAccountRepository,AbstractRepository {
+public class JdbcAccountRepositoryJdbc implements IAccountRepository, JdbcAbstractRepository {
 
 
 
@@ -25,8 +26,9 @@ public class AccountRepository implements IAccountRepository,AbstractRepository 
         }
     }
 
-    public void delete(Account account) {
+    public void delete(Long id) {
         try (Statement statement = setConnection().createStatement()){
+            Account account = new Account("","", null, id);
             String sqlQuery = "DELETE FROM accounts WHERE login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
         } catch (SQLException e) {
@@ -34,8 +36,9 @@ public class AccountRepository implements IAccountRepository,AbstractRepository 
         }
     }
 
-    public Account get(Account account) {
+    public Account get(Long id) {
         try (Statement statement = setConnection().createStatement()){
+            Account account = new Account("","", null, id);
             String sqlQuery = "SELECT id, login, password, accountstatus from accounts where login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();

@@ -3,6 +3,7 @@ package com.wilyr.crud.repository.hibernateRepository;
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -12,10 +13,10 @@ import java.util.Properties;
 public class SingletonHibernateRepository {
 
     private static SingletonHibernateRepository instance;
-    public SessionFactory sessionFactory;
+    public Session session;
 
-    private SingletonHibernateRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    private SingletonHibernateRepository(Session session) {
+        this.session= session;
     }
 
 
@@ -28,7 +29,7 @@ public class SingletonHibernateRepository {
             System.out.println("Error in load hibernate properties........");
         }
         configuration.setProperties(properties).addAnnotatedClass(Account.class).addAnnotatedClass(Skill.class).addAnnotatedClass(Developer.class);
-        instance = new SingletonHibernateRepository(configuration.configure().buildSessionFactory());
+        instance = new SingletonHibernateRepository(configuration.configure().buildSessionFactory().openSession());
         return instance;
     }
 
