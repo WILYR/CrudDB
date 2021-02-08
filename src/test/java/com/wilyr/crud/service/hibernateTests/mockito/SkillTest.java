@@ -1,14 +1,14 @@
 package com.wilyr.crud.service.hibernateTests.mockito;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.SkillServiceImpl;
+import com.wilyr.crud.service.SkillServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.mockito.BDDMockito.given;
 
-public class postgreSqlSkillTest {
+public class SkillTest {
     @Mock
     SkillServiceImpl skillService = org.mockito.Mockito.mock(SkillServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Skill skill = new Skill("Name");

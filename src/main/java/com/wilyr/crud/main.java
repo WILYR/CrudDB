@@ -1,6 +1,6 @@
 package com.wilyr.crud;
 
-import com.wilyr.crud.view.HibernateView.CommonView;
+import com.wilyr.crud.view.CommonView;
 
 import java.io.IOException;
 

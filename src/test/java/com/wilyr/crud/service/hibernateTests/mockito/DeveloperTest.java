@@ -3,7 +3,7 @@ package com.wilyr.crud.service.hibernateTests.mockito;
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.DeveloperServiceImpl;
+import com.wilyr.crud.service.DeveloperServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import static org.mockito.BDDMockito.given;
 
-public class postgreSqlDeveloperTest {
+public class DeveloperTest {
     @Mock
     DeveloperServiceImpl developerService =  org.mockito.Mockito.mock(DeveloperServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Skill[] arr= new Skill[]{new Skill("Name"), new Skill("Name2")};

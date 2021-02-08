@@ -4,14 +4,14 @@ import com.wilyr.crud.model.Account;
 import com.wilyr.crud.repository.IAccountRepository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class HibernateAccountRepository implements IAccountRepository {
 
     @Override
     public Account save(Account account) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = null;
             transaction = session.beginTransaction();
             Account returningAccount = session.get(Account.class, account.getId());
@@ -29,8 +29,8 @@ public class HibernateAccountRepository implements IAccountRepository {
 
     @Override
     public void delete(Long id) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
-            Account account = new Account("","", null, id);
+        try (Session session = HibernateUtils.getSession()) {
+            Account account = new Account("", "", null, id);
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Account.class, account.getId()));
             transaction.commit();
@@ -41,8 +41,8 @@ public class HibernateAccountRepository implements IAccountRepository {
 
     @Override
     public Account get(Long id) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
-            Account account = new Account("","", null, id);
+        try (Session session = HibernateUtils.getSession()) {
+            Account account = new Account("", "", null, id);
             return session.get(Account.class, account.getId());
         } catch (HibernateException e) {
             System.out.println("Error in session connection......");
@@ -52,7 +52,7 @@ public class HibernateAccountRepository implements IAccountRepository {
 
     @Override
     public Account update(Account account) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = null;
             transaction = session.beginTransaction();
             Account returningAccount = session.get(Account.class, account.getId());

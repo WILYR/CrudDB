@@ -1,7 +1,7 @@
 package com.wilyr.crud.service.hibernateTests.junit;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.SkillServiceImpl;
+import com.wilyr.crud.service.SkillServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 

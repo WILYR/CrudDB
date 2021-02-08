@@ -1,7 +1,7 @@
-package com.wilyr.crud.controller.hibernate;
+package com.wilyr.crud.controller;
 
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.SkillServiceImpl;
+import com.wilyr.crud.service.SkillServiceImpl;
 
 public class SkillController {
     SkillServiceImpl skillServiceImpl = new SkillServiceImpl();

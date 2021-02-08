@@ -1,4 +1,4 @@
-package com.wilyr.crud.view.HibernateView;
+package com.wilyr.crud.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class CommonView {
             System.out.print("Your choice: ");
             try {
                 menu = in.nextInt();
-            }catch (InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("It's not a number");
             }
             switch (menu) {

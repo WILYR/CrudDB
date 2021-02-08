@@ -11,7 +11,7 @@ public class JdbcSkillRepositoryJdbc implements ISkillsRepository, JdbcAbstractR
 
 
     public Skill save(Skill skill) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             String sqlQuery = "INSERT INTO skills VALUES (id,'" + skill.getName() + "');";
             statement.execute(sqlQuery);
             return skill;
@@ -22,8 +22,8 @@ public class JdbcSkillRepositoryJdbc implements ISkillsRepository, JdbcAbstractR
     }
 
     public void delete(Long id) {
-        try(Statement statement = setConnection().createStatement()) {
-            Skill skill = new Skill(id,"");
+        try (Statement statement = setConnection().createStatement()) {
+            Skill skill = new Skill(id, "");
             String sqlQuery = null;
             if (skill.getName() == null) {
                 sqlQuery = "DELETE FROM skills WHERE id = '" + skill.getId() + "';";
@@ -38,7 +38,7 @@ public class JdbcSkillRepositoryJdbc implements ISkillsRepository, JdbcAbstractR
 
 
     public Skill update(Skill skill) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             String sqlQuery = "UPDATE skills\n" +
                     "set name = '" + skill.getName() + "'\n" +
                     "where id = '" + skill.getId() + "';";
@@ -51,8 +51,8 @@ public class JdbcSkillRepositoryJdbc implements ISkillsRepository, JdbcAbstractR
     }
 
     public Skill get(Long id) {
-        try (Statement statement = setConnection().createStatement()){
-            Skill skill = new Skill(id,"");
+        try (Statement statement = setConnection().createStatement()) {
+            Skill skill = new Skill(id, "");
             String sqlQuery = "select id, name from skills where name = '" + skill.getName() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();

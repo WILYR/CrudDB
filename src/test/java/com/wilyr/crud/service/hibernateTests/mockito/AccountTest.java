@@ -2,7 +2,7 @@ package com.wilyr.crud.service.hibernateTests.mockito;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.hibernate.AccountServiceImpl;
+import com.wilyr.crud.service.AccountServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
-public class postgreSqlAccountTest {
+public class AccountTest {
     @Mock
     AccountServiceImpl accountService = org.mockito.Mockito.mock(AccountServiceImpl.class, Mockito.RETURNS_DEEP_STUBS);
     Account account = new Account("G", "Pass", AccountStatus.BANNED, 0);

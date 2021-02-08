@@ -14,7 +14,7 @@ import java.util.List;
 public class JdbcDeveloperRepositoryJdbc implements IDeveloperRepository, JdbcAbstractRepository {
 
     public Developer save(Developer developer) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             List<Skill> skillList = developer.getSkills();
             for (Skill i : skillList) {
                 String sqlQuery = "INSERT INTO developers value ('" + developer.getAccount().getId() +
@@ -29,7 +29,7 @@ public class JdbcDeveloperRepositoryJdbc implements IDeveloperRepository, JdbcAb
     }
 
     public void delete(Long id) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             Developer developer = new Developer();
             developer.setDeveloperId(id);
             String sqlQuery = "DELETE from developers where accountid = '" + developer.getAccount().getId() + "';";
@@ -40,7 +40,7 @@ public class JdbcDeveloperRepositoryJdbc implements IDeveloperRepository, JdbcAb
     }
 
     public Developer get(Long id) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             Developer developer = new Developer();
             developer.setDeveloperId(id);
             String sqlQuery = "SELECT accountid, skillid from developers where accountid = '" + developer.getAccount().getId() + "';";
@@ -63,7 +63,7 @@ public class JdbcDeveloperRepositoryJdbc implements IDeveloperRepository, JdbcAb
     }
 
     public Developer update(Developer developer, List<Skill> newSkills) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             String sqlQuery = "DELETE FROM developers where accountid = '" + developer.getAccount().getId() + "';";
             statement.execute(sqlQuery);
             JdbcSkillRepositoryJdbc skillRepository = new JdbcSkillRepositoryJdbc();

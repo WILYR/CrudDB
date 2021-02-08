@@ -4,23 +4,22 @@ import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 import java.util.Properties;
 
-public class SingletonHibernateRepository {
+public class HibernateUtils {
 
-    private static SingletonHibernateRepository instance;
+    private static HibernateUtils instance;
     public Session session;
 
-    private SingletonHibernateRepository(Session session) {
-        this.session= session;
+    private HibernateUtils(Session session) {
+        this.session = session;
     }
 
 
-    public static SingletonHibernateRepository getInstance()  {
+    public static HibernateUtils getInstance() {
         Configuration configuration = new Configuration();
         Properties properties = new Properties();
         try {
@@ -29,8 +28,12 @@ public class SingletonHibernateRepository {
             System.out.println("Error in load hibernate properties........");
         }
         configuration.setProperties(properties).addAnnotatedClass(Account.class).addAnnotatedClass(Skill.class).addAnnotatedClass(Developer.class);
-        instance = new SingletonHibernateRepository(configuration.configure().buildSessionFactory().openSession());
+        instance = new HibernateUtils(configuration.configure().buildSessionFactory().openSession());
         return instance;
+    }
+
+    public static Session getSession() {
+        return HibernateUtils.getInstance().session;
     }
 
 }

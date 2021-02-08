@@ -12,14 +12,14 @@ public class Developer {
     @Column(name = "id")
     private Long developerId;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "accountid")
     private Account account;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="developer_skills",
-            joinColumns=@JoinColumn(name="developer_id",referencedColumnName = "id"),
-            inverseJoinColumns=@JoinColumn(name="skill_id"))
+    @JoinTable(name = "developer_skills",
+            joinColumns = @JoinColumn(name = "developer_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private List<Skill> skills;
 
     public Developer(List<Skill> skills, Account account) {

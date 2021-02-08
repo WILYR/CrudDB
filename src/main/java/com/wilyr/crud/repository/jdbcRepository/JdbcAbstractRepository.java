@@ -8,7 +8,6 @@ import java.sql.Statement;
 public interface JdbcAbstractRepository {
 
 
-
     default Connection setConnection() {
         final String DATABASE_URL = "jdbc:mysql://localhost:3306/crud?serverTimezone=Europe/Moscow";
         final String USER = "root";

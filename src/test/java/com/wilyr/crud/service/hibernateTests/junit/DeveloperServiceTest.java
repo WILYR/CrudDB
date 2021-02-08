@@ -4,9 +4,9 @@ import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.AccountServiceImpl;
-import com.wilyr.crud.service.hibernate.DeveloperServiceImpl;
-import com.wilyr.crud.service.hibernate.SkillServiceImpl;
+import com.wilyr.crud.service.AccountServiceImpl;
+import com.wilyr.crud.service.DeveloperServiceImpl;
+import com.wilyr.crud.service.SkillServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 

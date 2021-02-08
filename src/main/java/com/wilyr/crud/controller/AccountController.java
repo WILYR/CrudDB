@@ -1,14 +1,14 @@
-package com.wilyr.crud.controller.hibernate;
+package com.wilyr.crud.controller;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.hibernate.AccountServiceImpl;
+import com.wilyr.crud.service.AccountServiceImpl;
 
 public class AccountController {
     AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
 
-    public Account save(String login, String password,String accountStatus) {
-        Account account = new Account(login,password);
+    public Account save(String login, String password, String accountStatus) {
+        Account account = new Account(login, password);
         try {
             account.setAccountStatus(AccountStatus.valueOf(accountStatus));
         } catch (IllegalArgumentException e) {
@@ -22,10 +22,10 @@ public class AccountController {
         accountServiceImpl.delete(idForDelete);
     }
 
-    public Account updatePassword(Long idForUpdate,String newLogin,String newPassword,String newStatus) {
+    public Account updatePassword(Long idForUpdate, String newLogin, String newPassword, String newStatus) {
         try {
-            return accountServiceImpl.update(new Account(newLogin,newPassword,AccountStatus.valueOf(newStatus),idForUpdate));
-        }catch (IllegalArgumentException e) {
+            return accountServiceImpl.update(new Account(newLogin, newPassword, AccountStatus.valueOf(newStatus), idForUpdate));
+        } catch (IllegalArgumentException e) {
             System.out.println("Wrong account status");
             return null;
         }

@@ -1,6 +1,6 @@
-package com.wilyr.crud.view.HibernateView;
+package com.wilyr.crud.view;
 
-import com.wilyr.crud.controller.hibernate.AccountController;
+import com.wilyr.crud.controller.AccountController;
 import com.wilyr.crud.model.Account;
 
 import java.util.Scanner;

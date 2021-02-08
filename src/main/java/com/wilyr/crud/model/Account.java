@@ -1,8 +1,6 @@
 package com.wilyr.crud.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -19,7 +17,7 @@ public class Account {
     @Column(name = "id")
     private long id;
 
-    @OneToOne(mappedBy = "account",cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "account", cascade = CascadeType.REMOVE)
     private Developer developer;
 
 

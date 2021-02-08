@@ -1,6 +1,6 @@
-package com.wilyr.crud.view.HibernateView;
+package com.wilyr.crud.view;
 
-import com.wilyr.crud.controller.hibernate.DeveloperController;
+import com.wilyr.crud.controller.DeveloperController;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 

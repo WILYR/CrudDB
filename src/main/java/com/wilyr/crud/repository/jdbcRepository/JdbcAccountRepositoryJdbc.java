@@ -1,6 +1,5 @@
 package com.wilyr.crud.repository.jdbcRepository;
 
-import com.wilyr.crud.controller.hibernate.AccountController;
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
 import com.wilyr.crud.repository.IAccountRepository;
@@ -12,10 +11,8 @@ import java.sql.Statement;
 public class JdbcAccountRepositoryJdbc implements IAccountRepository, JdbcAbstractRepository {
 
 
-
-
     public Account save(Account account) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             String sqlQuery = "INSERT into accounts values(id, '" + account.getLogin() + "', " +
                     "'" + account.getPassword() + "', '" + account.getAccountStatus() + "');";
             statement.execute(sqlQuery);
@@ -27,8 +24,8 @@ public class JdbcAccountRepositoryJdbc implements IAccountRepository, JdbcAbstra
     }
 
     public void delete(Long id) {
-        try (Statement statement = setConnection().createStatement()){
-            Account account = new Account("","", null, id);
+        try (Statement statement = setConnection().createStatement()) {
+            Account account = new Account("", "", null, id);
             String sqlQuery = "DELETE FROM accounts WHERE login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
         } catch (SQLException e) {
@@ -37,8 +34,8 @@ public class JdbcAccountRepositoryJdbc implements IAccountRepository, JdbcAbstra
     }
 
     public Account get(Long id) {
-        try (Statement statement = setConnection().createStatement()){
-            Account account = new Account("","", null, id);
+        try (Statement statement = setConnection().createStatement()) {
+            Account account = new Account("", "", null, id);
             String sqlQuery = "SELECT id, login, password, accountstatus from accounts where login = '" + account.getLogin() + "';";
             statement.execute(sqlQuery);
             ResultSet rs = statement.getResultSet();
@@ -53,7 +50,7 @@ public class JdbcAccountRepositoryJdbc implements IAccountRepository, JdbcAbstra
     }
 
     public Account update(Account account) {
-        try (Statement statement = setConnection().createStatement()){
+        try (Statement statement = setConnection().createStatement()) {
             String sqlQuery = "UPDATE accounts set password = '" + account.getPassword() + "'" +
                     ", accountstatus = '" + account.getAccountStatus() + "'";
             statement.execute(sqlQuery);

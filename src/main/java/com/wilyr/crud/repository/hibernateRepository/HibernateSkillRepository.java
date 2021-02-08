@@ -4,7 +4,6 @@ import com.wilyr.crud.model.Skill;
 import com.wilyr.crud.repository.ISkillsRepository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class HibernateSkillRepository implements ISkillsRepository {
@@ -12,7 +11,7 @@ public class HibernateSkillRepository implements ISkillsRepository {
 
     @Override
     public Skill save(Skill skill) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(skill);
             transaction.commit();
@@ -25,7 +24,7 @@ public class HibernateSkillRepository implements ISkillsRepository {
 
     @Override
     public Skill update(Skill skill) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             Skill returningSkill = session.get(Skill.class, skill.getId());
             if (returningSkill == null) {
@@ -45,7 +44,7 @@ public class HibernateSkillRepository implements ISkillsRepository {
 
     @Override
     public void delete(Long id) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Skill skill = new Skill(id, "");
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Skill.class, skill.getId()));
@@ -57,7 +56,7 @@ public class HibernateSkillRepository implements ISkillsRepository {
 
     @Override
     public Skill get(Long id) {
-        try (Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Skill skill = new Skill(id, "");
             return session.get(Skill.class, skill.getId());
         } catch (HibernateException e) {

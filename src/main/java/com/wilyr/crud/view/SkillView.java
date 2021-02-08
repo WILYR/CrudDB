@@ -1,6 +1,6 @@
-package com.wilyr.crud.view.HibernateView;
+package com.wilyr.crud.view;
 
-import com.wilyr.crud.controller.hibernate.SkillController;
+import com.wilyr.crud.controller.SkillController;
 import com.wilyr.crud.model.Skill;
 
 import java.util.InputMismatchException;
@@ -33,7 +33,7 @@ public class SkillView {
                     long id = 0;
                     try {
                         id = in.nextLong();
-                    }catch (InputMismatchException e) {
+                    } catch (InputMismatchException e) {
                         System.out.println("It's not a number");
                     }
                     System.out.print("New skill name: ");

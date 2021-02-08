@@ -2,7 +2,7 @@ package com.wilyr.crud.service.hibernateTests.junit;
 
 import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.AccountStatus;
-import com.wilyr.crud.service.hibernate.AccountServiceImpl;
+import com.wilyr.crud.service.AccountServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 

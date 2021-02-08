@@ -1,8 +1,8 @@
-package com.wilyr.crud.controller.hibernate;
+package com.wilyr.crud.controller;
 
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
-import com.wilyr.crud.service.hibernate.DeveloperServiceImpl;
+import com.wilyr.crud.service.DeveloperServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.List;
 public class DeveloperController {
 
     DeveloperServiceImpl developerServiceImpl = new DeveloperServiceImpl();
-    SkillController postgreSqlSkillController = new SkillController();
-    AccountController postgreSqlAccountController = new AccountController();
+    SkillController skillController = new SkillController();
+    AccountController accountController = new AccountController();
 
     public Developer save(Long id, String listSkills) {
         List<Skill> skillsForSave = new ArrayList<>();
         String[] splitListSkills = listSkills.split(",");
         for (String i : splitListSkills) {
-            if (postgreSqlSkillController.get(Long.parseLong(i)) != null) ;
-            skillsForSave.add(postgreSqlSkillController.get(Long.parseLong(i)));
+            if (skillController.get(Long.parseLong(i)) != null) ;
+            skillsForSave.add(skillController.get(Long.parseLong(i)));
         }
-        return developerServiceImpl.save(new Developer(skillsForSave, postgreSqlAccountController.get(id)));
+        return developerServiceImpl.save(new Developer(skillsForSave, accountController.get(id)));
     }
 
     public void delete(Long id) {
@@ -36,8 +36,8 @@ public class DeveloperController {
         List<Skill> skillsForSave = new ArrayList<>();
         String[] splitListSkills = newSkills.split(",");
         for (String i : splitListSkills) {
-            if (postgreSqlSkillController.get(Long.parseLong(i)) != null) ;
-            skillsForSave.add(postgreSqlSkillController.get(Long.parseLong(i)));
+            if (skillController.get(Long.parseLong(i)) != null) ;
+            skillsForSave.add(skillController.get(Long.parseLong(i)));
         }
         return developerServiceImpl.update(developer, skillsForSave);
     }

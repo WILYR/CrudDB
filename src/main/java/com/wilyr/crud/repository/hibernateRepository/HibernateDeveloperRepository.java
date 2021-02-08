@@ -1,13 +1,10 @@
 package com.wilyr.crud.repository.hibernateRepository;
 
-import com.wilyr.crud.model.Account;
 import com.wilyr.crud.model.Developer;
 import com.wilyr.crud.model.Skill;
 import com.wilyr.crud.repository.IDeveloperRepository;
-import liquibase.pro.packaged.D;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.List;
@@ -16,7 +13,7 @@ public class HibernateDeveloperRepository implements IDeveloperRepository {
 
     @Override
     public Developer save(Developer developer) {
-        try(Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(developer);
             transaction.commit();
@@ -29,7 +26,7 @@ public class HibernateDeveloperRepository implements IDeveloperRepository {
 
     @Override
     public void delete(Long id) {
-        try(Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Developer developer = new Developer();
             developer.setDeveloperId(id);
             Transaction transaction = session.beginTransaction();
@@ -43,7 +40,7 @@ public class HibernateDeveloperRepository implements IDeveloperRepository {
 
     @Override
     public Developer get(Long id) {
-        try(Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Developer developer = new Developer();
             developer.setDeveloperId(id);
             return session.get(Developer.class, developer.getDeveloperId());
@@ -56,7 +53,7 @@ public class HibernateDeveloperRepository implements IDeveloperRepository {
 
     @Override
     public Developer update(Developer developer, List<Skill> newSkills) {
-        try(Session session = SingletonHibernateRepository.getInstance().session) {
+        try (Session session = HibernateUtils.getSession()) {
             Transaction transaction = session.beginTransaction();
             Developer returningDeveloper = session.get(Developer.class, developer.getDeveloperId());
             returningDeveloper.setSkills(newSkills);
